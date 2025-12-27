@@ -1,0 +1,126 @@
+/* --- ESTILOS GERAIS E REUTILIZÁVEIS (Aparecem várias vezes) --- */
+
+body {
+    background-color: #584879;
+    color: #f2f2f2;
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Container dos blocos do contador */
+.time-segments {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: nowrap;
+}
+
+/* Estilo individual de cada bloco (Dias, Horas, etc) */
+.time-segment {
+    background-color: #3f2e69;
+    color: white;
+    padding: 15px 10px;
+    border-radius: 5px;
+    text-align: center;
+    min-width: 70px;
+}
+
+/* Números grandes do contador */
+.time-segment span {
+    display: block;
+    font-size: 3em;
+    font-weight: bold;
+    line-height: 1;
+}
+
+/* Legendas abaixo dos números */
+.time-segment label {
+    display: block;
+    font-size: 0.7em;
+    margin-top: 5px;
+}
+
+/* --- ORDEM DE APARIÇÃO NO HTML (index.html) --- */
+
+/* Wrapper principal: centraliza todo o conteúdo na tela */
+#countdown-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* Texto superior */
+.toptext {
+    margin-bottom: 10vh;
+    font-weight: 600;
+    font-style: italic;
+    padding: 0 15px;
+}
+
+/* Container específico da área do contador */
+#countdown-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Texto inferior */
+.text {
+    font-style: italic;
+    padding: 10vh;
+}
+
+/* --- ELEMENTOS DE OUTRAS PÁGINAS (cont.html) --- */
+
+#main-container {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.time-alive-container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+/* --- AJUSTES PARA DISPOSITIVOS MÓVEIS --- */
+
+@media (max-width: 600px) {
+    .toptext {
+        margin-bottom: 10vh;
+        font-size: 1.5;
+    }
+
+    .text {
+        margin-top: 0vh;
+        font-size: 0.9em;
+    }
+
+    .time-segment span {
+        font-size: 2em;
+    }
+
+    .time-segment label {
+        font-size: 0.5em;
+    }
+
+    .time-segment {
+        padding: 10px 5px;
+        min-width: 16vw;
+    }
+
+    .time-segments {
+        gap: 5px;
+        overflow-x: auto;
+        padding: 0 5px;
+        justify-content: flex-start;
+    }
+}
