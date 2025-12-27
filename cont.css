@@ -1,0 +1,338 @@
+/* --- ESTILOS GERAIS E REPETIDOS (TOP) --- */
+
+/* CONFIGURAÇÃO BASE DA PÁGINA */
+body {
+    margin: 0;
+    background-color: #817DB8;
+    color: #f2f2f2;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+/* ESTILO DOS BLOCOS DO CONTADOR (REPETIDO DA INDEX) */
+.time-segments {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.time-segment {
+    background-color: #332973;
+    color: white;
+    padding: 15px 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 10vw;
+    height: auto;
+}
+
+.time-segment span {
+    display: block;
+    font-size: 3em;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.time-segment label {
+    display: block;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+
+/* --- ESTILOS NA ORDEM DO HTML (CONT.HTML) --- */
+
+/* ESPAÇAMENTO DO CONTEÚDO PRINCIPAL */
+.cont {
+    padding: 5vw;
+}
+
+/* TÍTULO PRINCIPAL E TEXTOS DE APOIO */
+h1 {
+    font-size: 70px;
+    font-weight: bolder;
+}
+
+.text {
+    margin-bottom: 50px;
+    margin-top: 50px;
+    font-size: 25px;
+    text-align: justify;
+}
+
+/* ESTILOS DOS TÍTULOS DE SEÇÃO */
+.title,
+.title-e3 {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.title-e1 {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    font-size: 50px;
+    font-weight: bolder;
+    width: 100%;
+}
+
+.title-e2 {
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+    font-size: 50px;
+    font-weight: bolder;
+    width: 100%;
+}
+
+/* CONTAINER E IMAGENS DAS FOTOS MINI/MEGA */
+.box-m {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.box-m img {
+    height: auto;
+    padding: 0.5%;
+    box-sizing: border-box;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.box-mini,
+.box-mega {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.box-mini img,
+.box-mega img {
+    width: 33%;
+    height: auto;
+}
+
+.seta {
+    margin-top: 0%;
+    margin-bottom: -10%;
+    width: 20%;
+}
+
+/* GRID DA GALERIA DE FOTOS DO CASAL */
+.box-g {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -0.5%;
+}
+
+.box-g img {
+    width: 25%;
+    height: auto;
+    padding: 0.5%;
+    box-sizing: border-box;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* AJUSTES DE LARGURA ESPECÍFICOS PARA O MOSAICO */
+#img-g-6 {
+    width: 50%;
+}
+
+#img-g-8 {
+    width: 75%;
+}
+
+/* SEÇÃO DE CARTAS (BLOCO DE FUNDO CLARO) */
+.box-c {
+    background-color: #f2f2f2;
+    width: 100vw;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5vh 0;
+}
+
+.title-e3 {
+    color: #6A1238;
+    display: block;
+}
+
+.text1 {
+    display: flex;
+    font-size: 25px;
+    justify-content: center;
+    margin-top: -30px;
+    margin-bottom: 40px;
+    color: #6A1238;
+}
+
+/* ESTILO DOS BOTÕES DAS CARTAS */
+.box-c-letters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.box-c-letters-i {
+    background-color: #6b1539;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 25px;
+    font-weight: 500;
+    width: 20vw;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* EFEITO DE SELEÇÃO DA CARTA */
+.box-c-letters-i.active {
+    background-color: #a02056;
+    transform: scale(1.08);
+}
+
+/* CONTEÚDO E ANIMAÇÃO DOS TEXTOS DAS CARTAS */
+.box-c-content {
+    margin-top: 40px;
+    padding: 20px;
+    width: 80%;
+    text-align: center;
+}
+
+.letter-text {
+    display: none;
+    font-size: 22px;
+    text-align: justify;
+    color: #332973;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.letter-text.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- MEDIA QUERIES (MOBILE) --- */
+@media (max-width: 700px) {
+
+    h1 {
+        font-size: 50px;
+    }
+
+    p,
+    h1,
+    .box-g,
+    .box-m {
+        margin: 5%;
+    }
+
+    .box-g img {
+        border-radius: 5px;
+    }
+
+    .text {
+        font-size: 25px;
+    }
+
+    .text1 {
+        margin-top: 1vh;
+        font-size: 14px;
+    }
+
+
+    .time-segments {
+        flex-wrap: wrap;
+        padding: 5%;
+    }
+
+    .time-segment {
+        width: 30%;
+        padding: 10px 0;
+    }
+
+    .time-segment span {
+        font-size: 1.5em;
+    }
+
+    .time-segment label {
+        font-size: 0.6em;
+    }
+
+    .title {
+        font-size: 25px;
+    }
+
+    .title-e1,
+    .title-e2 {
+        font-size: 35px;
+    }
+
+    .box-c {
+        min-height: 60vh;
+        height: auto;
+        padding-bottom: 40px;
+    }
+
+    .box-c-letters {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .box-c-letters-i {
+        width: 72.5vw;
+        height: 6vh;
+        font-size: 20px;
+    }
+
+    .box-c-content {
+        width: 90%;
+    }
+
+    .letter-text {
+        font-size: 18px;
+        text-align: justify;
+    }
+}
+
+/* TROCA DE TITULOS */
+
+@media (max-width: 400px) {
+    .title-e3 {
+        display: none;
+    }
+
+    .title-e3-mb {
+        display: block;
+        color: #6A1238;
+        font-size: 40px;
+        font-weight: 700;
+        text-align: center;
+    }
+}
