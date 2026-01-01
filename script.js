@@ -21,7 +21,18 @@ function updateCountdown() {
     // Se a distância for zero ou negativa, significa que o aniversário chegou!
     if (distance <= 0) {
     clearInterval(countdownInterval); 
-    window.location.replace("./cont.html")
+    console.log("O tempo acabou!"); 
+    
+    // Esse alerta vai avisar se o código chegou aqui ou não
+    alert("O tempo acabou! Vou tentar abrir a página agora."); 
+
+    // Tentativa de redirecionamento forçado
+    window.location.href = "cont.html"; 
+    
+    // Se em 2 segundos não mudar, ele tenta esse outro método:
+    setTimeout(function() {
+        window.location.replace("cont.html");
+    }, 2000);
     return; 
 }
 
@@ -59,6 +70,7 @@ updateCountdown();
 
 // Cria um intervalo que repete a função a cada 1 segundo (1000 milissegundos)
 const countdownInterval = setInterval(updateCountdown, 1000);
+
 
 
 
