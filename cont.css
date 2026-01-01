@@ -256,13 +256,8 @@ h1 {
         border-radius: 5px;
     }
 
-    .text {
-        font-size: 25px;
-    }
-
     .text1 {
         margin-top: 1vh;
-        font-size: 14px;
     }
 
 
@@ -315,7 +310,7 @@ h1 {
         width: 90%;
     }
 
-    .letter-text {
+    .letter-text, .text, .text1 {
         font-size: 18px;
         text-align: justify;
     }
@@ -335,4 +330,5 @@ h1 {
         font-weight: 700;
         text-align: center;
     }
+
 }
