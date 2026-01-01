@@ -1,6 +1,6 @@
 // --- CONFIGURAÇÃO: DEFINIÇÃO DO DESTINO E DATA ALVO ---
 // Define o momento exato da liberação e para qual arquivo o usuário será enviado
-const targetDate = new Date("January 1, 2026 00:00:00").getTime();
+const targetDate = new Date("January 1, 2026 16:28:00").getTime();
 const revelationFile = "cont.html";
 
 // --- MAPEAMENTO DE INTERFACE ---
@@ -54,3 +54,4 @@ function updateCountdown() {
 updateCountdown();
 
 const countdownInterval = setInterval(updateCountdown, 1000);
+
