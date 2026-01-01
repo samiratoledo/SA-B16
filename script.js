@@ -21,7 +21,7 @@ function updateCountdown() {
     // Se a distância for zero ou negativa, significa que o aniversário chegou!
     if (distance <= 0) {
     clearInterval(countdownInterval); 
-    window.location.replace("./cont.html"); // Tente usar replace em vez de href
+    window.location.replace("cont.html"); // Tente usar replace em vez de href
     return; 
 }
 
@@ -59,6 +59,7 @@ updateCountdown();
 
 // Cria um intervalo que repete a função a cada 1 segundo (1000 milissegundos)
 const countdownInterval = setInterval(updateCountdown, 1000);
+
 
 
 
