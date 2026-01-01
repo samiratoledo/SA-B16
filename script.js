@@ -1,6 +1,7 @@
 // --- CONFIGURAÇÃO: DEFINIÇÃO DO DESTINO E DATA ALVO ---
 // Aqui você define para quando é a surpresa e para onde o site vai depois que o tempo acabar
 const targetDate = new Date("January 1, 2026 16:34:00").getTime();
+const revelationFile = "./cont.html"; // O ./ indica "nesta mesma pasta"
 
 // --- MAPEAMENTO DE INTERFACE ---
 // Captura os elementos do HTML onde os números vão aparecer.
@@ -58,5 +59,6 @@ updateCountdown();
 
 // Cria um intervalo que repete a função a cada 1 segundo (1000 milissegundos)
 const countdownInterval = setInterval(updateCountdown, 1000);
+
 
 
