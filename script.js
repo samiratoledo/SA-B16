@@ -1,5 +1,5 @@
 // --- CONFIGURAÇÃO ---
-const targetDate = new Date("January 1, 2026 00:00:00").getTime();
+const targetDate = new Date("January 11, 2026 00:00:00").getTime();
 const revelationFile = "cont.html";
 
 // 1. Declaramos a variável do intervalo no topo, vazia
@@ -42,3 +42,4 @@ function updateCountdown() {
 // 3. Primeiro iniciamos o loop, depois chamamos a função pela primeira vez
 countdownInterval = setInterval(updateCountdown, 1000);
 updateCountdown();
+
