@@ -1,7 +1,6 @@
 // --- CONFIGURAÇÃO: DEFINIÇÃO DO DESTINO E DATA ALVO ---
 // Aqui você define para quando é a surpresa e para onde o site vai depois que o tempo acabar
 const targetDate = new Date("January 1, 2026 16:34:00").getTime();
-const revelationFile = "cont.html"; // Nome do arquivo da página principal
 
 // --- MAPEAMENTO DE INTERFACE ---
 // Captura os elementos do HTML onde os números vão aparecer.
@@ -20,10 +19,10 @@ function updateCountdown() {
     // 2. Verificação de Expiração: 
     // Se a distância for zero ou negativa, significa que o aniversário chegou!
     if (distance <= 0) {
-        clearInterval(countdownInterval); // Para o relógio
-        window.location.href = revelationFile; // Abre a página do presente (cont.html)
-        return; 
-    }
+    clearInterval(countdownInterval); 
+    window.location.replace("./cont.html"); // Tente usar replace em vez de href
+    return; 
+}
 
     // 3. Conversão de Milissegundos: 
     // O computador entende tempo em milissegundos, aqui criamos as "regras" para converter
@@ -59,4 +58,5 @@ updateCountdown();
 
 // Cria um intervalo que repete a função a cada 1 segundo (1000 milissegundos)
 const countdownInterval = setInterval(updateCountdown, 1000);
+
 
