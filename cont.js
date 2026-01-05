@@ -1,70 +1,58 @@
 // CONTADOR DE ANOS CONT
 
 function updateTimeAlive() {
-    // Início: 1 de Janeiro de 2010, Meia-noite (00:00:00)
-    const startDate = new Date("2010-01-01T00:00:00");
-
+    // 1. CORREÇÃO DA DATA: Alterado de 01/01 para 11/01
+    const startDate = new Date("2010-01-11T00:00:00");
     const now = new Date();
-    // Subtraímos 1 hora (60 minutos) da hora atual em milissegundos para corrigir o adiantamento
-    now.setMinutes(now.getMinutes() - 60);
-    // Ou seja, o contador está calculando o tempo decorrido até 1 hora atrás.
-    // Isso garante que ele não fique "adiantado" para ele.
-    // -------------------------
 
-    // Calcula a diferença de tempo exata em milissegundos
-    let diffMs = now.getTime() - startDate.getTime();
+    // Mantendo sua correção de 1 hora se for necessária para o seu fuso
+    // now.setMinutes(now.getMinutes() - 60);
 
-    // ===================================================
-    // 1. ANOS E MESES (Usando a diferença de datas para maior precisão)
-    // ===================================================
+    // --- CÁLCULO PRECISO DE ANOS, MESES E DIAS ---
     let displayYears = now.getFullYear() - startDate.getFullYear();
     let displayMonths = now.getMonth() - startDate.getMonth();
+    let displayDays = now.getDate() - startDate.getDate();
 
-    // Ajusta anos e meses se ainda não fez aniversário no ano/mês atual
-    if (displayMonths < 0) {
-        displayYears--;
-        displayMonths += 12; // 12 meses em um ano
+    // 2. Ajuste se o dia atual for menor que o dia do nascimento
+    if (displayDays < 0) {
+        displayMonths--;
+        // Pega o último dia do mês anterior para saber quantos dias compensar
+        const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+        displayDays += lastDayOfMonth;
     }
 
-    // ===================================================
-    // 2. DIAS, HORAS, MINUTOS e SEGUNDOS 
-    // ===================================================
+    // 3. Ajuste se o mês atual for menor que o mês de nascimento
+    if (displayMonths < 0) {
+        displayYears--;
+        displayMonths += 12;
+    }
 
-    const MS_IN_SECOND = 1000;
-    const MS_IN_MINUTE = 60 * MS_IN_SECOND;
-    const MS_IN_HOUR = 60 * MS_IN_MINUTE;
-    const MS_IN_DAY = 24 * MS_IN_HOUR;
-
-    let remainingMs = diffMs;
-
-    // Remove os milissegundos equivalentes aos anos e meses já contados para isolar a contagem do dia
-    // (Esta parte pode ser complexa e gerar inconsistências em meses, por isso mantemos o cálculo do dia a partir do total)
-
-    let totalDays = Math.floor(remainingMs / MS_IN_DAY);
-    let remainingTimeInCurrentDay = remainingMs % MS_IN_DAY;
-
-    // HORAS (Horas do dia, já ajustadas pela linha 7)
-    const displayHours = Math.floor(remainingTimeInCurrentDay / MS_IN_HOUR);
-    remainingTimeInCurrentDay %= MS_IN_HOUR;
-
-    // MINUTOS
-    const displayMinutes = Math.floor(remainingTimeInCurrentDay / MS_IN_MINUTE);
-    remainingTimeInCurrentDay %= MS_IN_MINUTE;
-
-    // SEGUNDOS
-    const displaySeconds = Math.floor(remainingTimeInCurrentDay / MS_IN_SECOND);
+    // --- CÁLCULO DE HORAS, MINUTOS E SEGUNDOS ---
+    // Como a startDate é meia-noite (00:00:00), pegamos o tempo atual do dia
+    const displayHours = now.getHours();
+    const displayMinutes = now.getMinutes();
+    const displaySeconds = now.getSeconds();
 
     // --- ATUALIZAÇÃO DO HTML ---
+    // Usamos os IDs que você já tem no seu projeto
+    const elements = {
+        years: displayYears,
+        months: displayMonths,
+        days: displayDays,
+        hours: displayHours,
+        minutes: displayMinutes,
+        seconds: displaySeconds
+    };
 
-    document.getElementById("years").innerText = String(displayYears).padStart(2, '0');
-    document.getElementById("months").innerText = String(displayMonths).padStart(2, '0');
-    // Para um contador visual, costuma-se usar os dias restantes do mês/ano:
-    document.getElementById("days").innerText = String(totalDays % 30).padStart(2, '0'); // Mostra os dias no ciclo de 30
-    document.getElementById("hours").innerText = String(displayHours).padStart(2, '0');
-    document.getElementById("minutes").innerText = String(displayMinutes).padStart(2, '0');
-    document.getElementById("seconds").innerText = String(displaySeconds).padStart(2, '0');
+    for (const [id, value] of Object.entries(elements)) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.innerText = String(value).padStart(2, '0');
+        }
+    }
 }
 
+// Inicializa e define o intervalo
 updateTimeAlive();
 setInterval(updateTimeAlive, 1000);
 
