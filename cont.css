@@ -310,15 +310,23 @@ h1 {
         width: 90%;
     }
 
-    .letter-text, .text, .text1 {
+    .letter-text,
+    .text {
         font-size: 18px;
         text-align: justify;
     }
-}
 
-/* TROCA DE TITULOS */
+    .text1 {
+        font-size: 18px;
+        text-align: center;
+    }
 
-@media (max-width: 400px) {
+    ul {
+        padding-right: 6vw;
+    }
+
+
+    /* TROCA DE TITULOS */
     .title-e3 {
         display: none;
     }
@@ -330,5 +338,4 @@ h1 {
         font-weight: 700;
         text-align: center;
     }
-
 }
