@@ -1,3 +1,42 @@
+// Essa função dispara os confetes
+function soltarConfetes() {
+    // Definimos as cores para combinar com o seu site (Roxo, Vinho, Rosa e Dourado)
+    var colors = ['#817DB8', '#6A1238', '#a02056', '#FFD700', '#ffffff'];
+
+    // Configuração para um efeito de "canhões laterais"
+    var end = Date.now() + (2 * 1000); // O efeito vai durar 2 segundos
+
+    (function frame() {
+        confetti({
+            particleCount: 2,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 }, // Canhão da esquerda
+            colors: colors
+        });
+        confetti({
+            particleCount: 2,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 }, // Canhão da direita
+            colors: colors
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    }());
+}
+
+// --- GATILHO ---
+// Isso garante que os confetes só explodam quando a página inteira carregar
+// (inclusive as fotos, para não travar).
+window.addEventListener('load', () => {
+    // Um pequeno atraso de meio segundo para dar um "tchan"
+    setTimeout(soltarConfetes, 500);
+});
+
+
 // CONTADOR DE ANOS CONT
 
 function updateTimeAlive() {
